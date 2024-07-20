@@ -3,3 +3,5 @@ tensorflow_datasets
 pandas
 matplotlib
 ipykernel
+scikit-learn
+seaborn

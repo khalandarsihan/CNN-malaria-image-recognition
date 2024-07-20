@@ -69,3 +69,34 @@ def preprocess_dataset(dataset, target_size=(128, 128), batch_size=64, buffer_si
     dataset = dataset.batch(batch_size).prefetch(tf.data.AUTOTUNE)
 
     return dataset
+
+import numpy as np
+import tensorflow as tf
+def extract_images_labels(dataset):
+    """
+    Extracts images and labels from a tf.data.Dataset object.
+
+    Args:
+        dataset (tf.data.Dataset): The dataset to extract images and labels from.
+
+    Returns:
+        Tuple of numpy arrays: (images, labels)
+        - images (np.ndarray): Array of images extracted from the dataset.
+        - labels (np.ndarray): Array of labels extracted from the dataset.
+    """
+    images_list = []
+    labels_list = []
+
+    for batch in dataset:
+        images, labels = batch
+        images_list.append(images.numpy())
+        labels_list.append(labels.numpy())
+
+    # Flatten the batched arrays to a single array
+    images_array = np.concatenate(images_list, axis=0)
+    labels_array = np.concatenate(labels_list, axis=0)
+
+    return images_array, labels_array
+
+# Usage example
+# test_images, test_labels = extract_images_labels(test_dataset)

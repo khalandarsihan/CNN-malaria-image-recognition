@@ -89,3 +89,48 @@ def visualize_image_mean_and_std(dataset, title, target_size=(128, 128), batch_s
     fig.suptitle(f'{title} - Image Mean and Standard Deviation')
     plt.tight_layout()
     plt.show()
+
+    import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+from typing import List
+
+def visualize_predictions(
+    images: np.ndarray, 
+    actual_labels: np.ndarray, 
+    predicted_labels: np.ndarray, 
+    title: str
+) -> None:
+    """
+    Visualizes sample images from the dataset along with their actual and predicted labels.
+
+    Args:
+        images (np.ndarray): Array of images to be visualized.
+        actual_labels (np.ndarray): Array of actual labels corresponding to the images.
+        predicted_labels (np.ndarray): Array of predicted labels corresponding to the images.
+        title (str): Title for the visualization.
+
+    Returns:
+        None
+
+    Example:
+        images, actual_labels = extract_images_labels(dataset)
+        predicted_labels = model.predict(images)
+        visualize_sample_images_with_actual_predicted_labels(images, actual_labels, predicted_labels, "Model Evaluation")
+    """
+    fig, axes = plt.subplots(4, 4, figsize=(10, 10))
+    indices = np.random.choice(len(images), size=16, replace=False)
+    
+    for ax, idx in zip(axes.flatten(), indices):
+        image = images[idx]
+        ax.imshow(image)
+        
+        actual_label = "Parasitized" if actual_labels[idx] == 0 else "Uninfected"
+        predicted_label = "Parasitized" if predicted_labels[idx] == 0 else "Uninfected"
+        
+        ax.set_title(f"Actual: {actual_label}\nPredicted: {predicted_label}")
+        ax.axis("off")
+    
+    plt.suptitle(f'{title} - Sample Images with Labels')
+    plt.tight_layout()
+    plt.show()

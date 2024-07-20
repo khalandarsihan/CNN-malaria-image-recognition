@@ -41,6 +41,7 @@ To run the notebooks and scripts in this repository, follow these steps:
 
 - visualization_utils.py: Contains functions to visualize sample images, image statistics, and class distributions.
 - dataset_utils.py: Provides functions for preprocessing the dataset, including resizing images, normalization, and checking for missing or corrupt data.
+- model_utils.py`: Python script with utility functions for model training and evaluation like plotting training history, confusion matrix, image mismatches etc.
 
 ## Code Details
 
@@ -81,6 +82,17 @@ This script provides utility functions for dataset preprocessing:
 - resize_and_normalize_images: Resizes images and normalizes pixel values.
 - check_missing_data: Checks for any missing data in the dataset.
 - validate_images: Identifies and handles corrupt images in the dataset.
+
+### model_utils.py
+- extract_labels_predictions: Extracts actual images, labels, and predicted labels from a tf.data.Dataset using a trained model.
+- eval_visualize_performance: Evaluates the model's performance and visualizes key metrics including confusion matrix, accuracy, precision, recall, and F1 score.
+- show_actuals_predictions: Visualizes sample images with their actual and predicted labels.
+- plot_training_history: Plots training and validation accuracy and loss from the model training history.
+
+### Optimization of CNN Model Training
+The cnn-model_training.ipynb notebook has been optimized to use the new utility functions. Please check the updated notebook for the improved workflow and ensure that the changes work as expected.
+
+
 
 ## Contributing
 
