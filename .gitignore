@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *.class
+*cache*
 
 # C extensions
 *.so
@@ -75,7 +76,6 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-notebooks/*.ipynb
 
 # IPython
 profile_default/
@@ -127,6 +127,8 @@ cython_debug/
 *.iml
 
 # Data directories
+notebooks/data
+notebooks/logs
 data/raw/
 data/processed/
 data/external/
